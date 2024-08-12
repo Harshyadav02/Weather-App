@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+<body>
+
+    <div class="container" th:if="${response!=null}">
+        <div class="weather__header">
+            <form class="weather__search" action="" method="post">
+                <input type="text" placeholder="Search for a city..." class="weather__searchform" name="cityInfo">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </form> 
+            <div class="weather__units">
+                <span class="weather_unit_celsius" th:text="${response['tempCel']}"><span>&#176C</span></span>
+                <span class="weather_unit_farenheit" th:text="${response['tempFah']}"><span>&#176CF</span></span>
+            </div>
+        </div>
+        <div class="weather__body">
+            <h1 class="weather__city" th:text="${response['location']}"></h1>
+            <!-- <div class="weather__datetime">
+            </div> -->
+            <!-- <div class="weather__forecast" th:text="${weather}"></div> -->
+            <div class="weather__forecast" th:text="${response['Desc']}"></div>
+            <div class="weather__icon">
+                 <img th:src="'http://openweathermap.org/img/wn/' + ${response['icon']} + '@2x.png'" alt="Weather Icon" /> 
+            </div>
+            <p class="weather__temperature">
+            </p>
+            <div class="weather__minmax">
+                <p>Min: <span th:text="${response['temp_min']}"></span></p>
+                <p>Max: <span th:text="${response['temp_max']}"></span></p>
+            </div>
+        </div>
+
+        <div class="weather__info">
+            <div class="weather__card">
+                <i class="fa-solid fa-temperature-full"></i>
+                <div>
+                    <p>Real Feel</p>
+                    <p class="weather__realfeel">&#176</p>
+                </div>
+            </div>
+            <div class="weather__card">
+                <i class="fa-solid fa-droplet"></i>
+                <div>
+                    <p>Humidity</p>
+                    <p class="weather__humidity"><span th:text="${response['humidity']}"> </span>&#176</p>
+                </div>
+            </div>
+            <div class="weather__card">
+                <i class="fa-solid fa-wind"></i>
+                <div>
+                    <p>Wind</p>
+                    <p class="weather__wind"> <span th:text="${response['wind']}"> </span>&#176</p>
+                </div>
+            </div>
+            <div class="weather__card">
+                <i class="fa-solid fa-gauge-high"></i>
+                <div>
+                    <p>Pressure</p>
+                    <p class="weather__pressure"><span th:text="${response['pressure']}"></span>&#176</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" th:if="${response==null}">
+        <div class="weather__header">
+            <form class="weather__search" action="" method="post">
+                <input type="text" placeholder="Search for a city..." class="weather__searchform" name="cityInfo">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </form> 
+            <div class="weather__units">
+                <span class="weather_unit_celsius"><span>&#176C</span></span>
+                <span class="weather_unit_farenheit"><span>&#176CF</span></span>
+            </div>
+        </div>
+        <div class="weather__body">
+            <h1 class="weather__city"></h1>
+            <!-- <div class="weather__datetime">
+            </div> -->
+            <!-- <div class="weather__forecast" th:text="${weather}"></div> -->
+            <div class="weather__forecast"></div>
+            <!-- <div class="weather__icon">
+                 <img th:src="'http://openweathermap.org/img/wn/' + ${response['icon']} + '@2x.png'" alt="Weather Icon" /> 
+            </div> -->
+            <p class="weather__temperature">
+            </p>
+            <div class="weather__minmax">
+                <p>Min: <span></span></p>
+                <p>Max: <span></span></p>
+            </div>
+        </div>
+
+        <div class="weather__info">
+            <div class="weather__card">
+                <i class="fa-solid fa-temperature-full"></i>
+                <div>
+                    <p>Real Feel</p>
+                    <p class="weather__realfeel">&#176</p>
+                </div>
+            </div>
+            <div class="weather__card">
+                <i class="fa-solid fa-droplet"></i>
+                <div>
+                    <p>Humidity</p>
+                    <p class="weather__humidity"><span> </span>&#176</p>
+                </div>
+            </div>
+            <div class="weather__card">
+                <i class="fa-solid fa-wind"></i>
+                <div>
+                    <p>Wind</p>
+                    <p class="weather__wind"> <span> </span>&#176</p>
+                </div>
+            </div>
+            <div class="weather__card">
+                <i class="fa-solid fa-gauge-high"></i>
+                <div>
+                    <p>Pressure</p>
+                    <p class="weather__pressure"><span></span>&#176</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://kit.fontawesome.com/a692e1c39f.js" crossorigin="anonymous"></script>
+    <!-- <script src="app.js"></script> -->
+</body>
+</html>
