@@ -31,7 +31,7 @@ public class WeatherService {
             // retirving data from api
             
             Map<String, Object> response = restTemplate.getForObject(url, Map.class);
-            // System.out.println(response);
+            
             // creating map from the retrived data
             if (response != null) {
                 
@@ -48,24 +48,24 @@ public class WeatherService {
                 weatherData.put("tempFah", (Double) main.get("temp") * 9 / 5 + 32);
 
                 weatherData.put("wind", wind.get("deg"));
+                weatherData.put("wind_speed",wind.get("speed"));
                 weatherData.put("location", response.get("name"));
 
-                
                 
                 List<Map<String,Object>> weatherList = (List<Map<String,Object>>)(response.get("weather"));
                 weatherData.put("Desc",weatherList.get(0).get("description"));
                 weatherData.put("icon",weatherList.get(0).get("icon"));
-                // System.out.println(weatherList.get(0).);
-                System.out.println(weatherList);
                 return weatherData;
             }
             else{
-                return Map.of("error","No data found for city"+city);
+                weatherData.put("error","No data found for city\t"+city);
+                return weatherData;
             }
 
         } catch (Exception e) {
 
-            return Map.of("error","something went wrong");
+            weatherData.put("error","somthing went wrong");
+            return weatherData;
         }
     }
 }
