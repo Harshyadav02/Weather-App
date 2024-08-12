@@ -22,9 +22,7 @@
         </div>
         <div class="weather__body">
             <h1 class="weather__city" th:text="${response['location']}"></h1>
-            <!-- <div class="weather__datetime">
-            </div> -->
-            <!-- <div class="weather__forecast" th:text="${weather}"></div> -->
+            
             <div class="weather__forecast" th:text="${response['Desc']}"></div>
             <div class="weather__icon">
                  <img th:src="'http://openweathermap.org/img/wn/' + ${response['icon']} + '@2x.png'" alt="Weather Icon" /> 
@@ -41,8 +39,8 @@
             <div class="weather__card">
                 <i class="fa-solid fa-temperature-full"></i>
                 <div>
-                    <p>Real Feel</p>
-                    <p class="weather__realfeel">&#176</p>
+                    <p>Wind Speed</p>
+                    <p class="weather__realfeel" th:text="${response['wind_speed']}">&#176</p>
                 </div>
             </div>
             <div class="weather__card">
