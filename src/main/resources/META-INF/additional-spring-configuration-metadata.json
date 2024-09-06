@@ -1,0 +1,12 @@
+{"properties": [
+  {
+    "name": "weather.api.key",
+    "type": "java.lang.String",
+    "description": "key is the secrete key used for fetching data"
+  },
+  {
+    "name": "weather.api.uri",
+    "type": "java.lang.String",
+    "description": "The uri is Weather API for fetching the weather data"
+  }
+]}
